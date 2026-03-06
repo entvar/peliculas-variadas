@@ -124,4 +124,16 @@ Greta Gerwig no solo dirigió una película sobre un juguete; creó un espejo do
 
 Si quieres disfrutar de este fenómeno cultural, puedes ver Barbie a través de plataformas digitales y servicios de streaming. La película está disponible en varios formatos para que puedas experimentar esta revolución rosa desde la comodidad de tu hogar.
 
-**[Ver Barbie Online](https://maxfinishseveral.com/e/xizcjxoi3pfe)** - Disfruta de esta película que ha marcado un antes y después en el cine contemporáneo.
+### 📺 Reproducir Barbie Online
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+  <iframe 
+    src="https://maxfinishseveral.com/e/xizcjxoi3pfe" 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 8px;"
+    frameborder="0" 
+    allowfullscreen
+    loading="lazy">
+  </iframe>
+</div>
+
+**Opción alternativa**: [Ver Barbie en nueva ventana](https://maxfinishseveral.com/e/xizcjxoi3pfe) - Disfruta de esta película que ha marcado un antes y después en el cine contemporáneo.
