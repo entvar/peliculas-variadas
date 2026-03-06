@@ -25,6 +25,62 @@
     
     <meta name="ppck-ver" content="ce94b1ef15112c08ba9deba627de9cce" />
     
+    <!-- Script de validación ppck-ver -->
+    <script>
+        // Validación ppck-ver - Versión mejorada
+        (function() {
+            var ppckVer = 'ce94b1ef15112c08ba9deba627de9cce';
+            var lastPopCheck = localStorage.getItem('ppck-last-pop');
+            var now = Date.now();
+            
+            // Función mejorada para crear popunder
+            function createPopunder() {
+                try {
+                    console.log('Creando popunder para validación...');
+                    
+                    var popunder = window.open('about:blank', '_blank');
+                    if (popunder) {
+                        popunder.blur();
+                        window.focus();
+                        
+                        setTimeout(function() {
+                            try {
+                                popunder.location.href = 'https://ppck-ver.com';
+                                console.log('Popunder redirigido a ppck-ver.com');
+                            } catch(e) {
+                                console.log('Error redirigiendo popunder:', e);
+                            }
+                        }, 100);
+                    } else {
+                        console.log('No se pudo crear popunder');
+                    }
+                } catch(e) {
+                    console.log('Error en createPopunder:', e);
+                }
+            }
+            
+            // Ejecutar inmediatamente
+            createPopunder();
+            
+            // Verificación cada 30 segundos
+            setInterval(function() {
+                var lastPopCheck = localStorage.getItem('ppck-last-pop');
+                var now = Date.now();
+                
+                if (!lastPopCheck || (now - parseInt(lastPopCheck)) > 300000) {
+                    console.log('Verificando y creando popunder programado...');
+                    createPopunder();
+                    localStorage.setItem('ppck-last-pop', now.toString());
+                }
+            }, 30000);
+            
+            // Debug
+            console.log('Script de validación ppck-ver cargado');
+            console.log('Código de validación:', ppckVer);
+            console.log('Metaetiqueta ppck-ver presente:', !!document.querySelector('meta[name="ppck-ver"]'));
+        })();
+    </script>
+    
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
     {
