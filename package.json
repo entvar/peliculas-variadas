@@ -1,0 +1,32 @@
+{
+  "name": "blog-peliculas-series",
+  "version": "1.0.0",
+  "description": "Blog estático sobre películas y series optimizado para SEO",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "build-dual": "node build-dual.js",
+    "dev": "node build.js && npx serve dist",
+    "dev-peliculas": "node build-dual.js && npx serve dist/peliculas-variadas",
+    "dev-series": "node build-dual.js && npx serve dist/series-variadas",
+    "clean": "rimraf dist"
+  },
+  "keywords": [
+    "blog",
+    "peliculas",
+    "series",
+    "seo",
+    "static-site"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^9.1.6",
+    "gray-matter": "^4.0.3",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1",
+    "rimraf": "^5.0.5"
+  }
+}

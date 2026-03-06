@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}}</title>
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Blog de Películas y Series">
+    <link rel="canonical" href="{{CURRENT_PAGE === 'home' ? '/' : '/' + CURRENT_PAGE}}">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    {{META_TAGS}}
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "{{CURRENT_PAGE === 'home' ? 'WebSite' : 'Article'}}",
+        "name": "{{TITLE}}",
+        "description": "{{CURRENT_PAGE === 'home' ? 'Blog sobre películas y series. Reseñas, noticias y análisis del mundo del cine y la televisión.' : ''}}",
+        "url": "{{CURRENT_PAGE === 'home' ? '/' : '/' + CURRENT_PAGE}}",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Blog de Películas y Series"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">
+                    <a href="/">🎬 Blog de Películas y Series</a>
+                </h1>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/" class="{{CURRENT_PAGE === 'home' ? 'active' : ''}}">Inicio</a></li>
+                        <li><a href="/categoria/peliculas" class="{{CURRENT_PAGE === 'category' && CATEGORY === 'peliculas' ? 'active' : ''}}">Películas</a></li>
+                        <li><a href="/categoria/series" class="{{CURRENT_PAGE === 'category' && CATEGORY === 'series' ? 'active' : ''}}">Series</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle dark mode" id="theme-toggle">
+                        <span class="theme-icon" id="theme-icon">🌙</span>
+                    </button>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            {{CONTENT}}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Blog de Películas y Series. Todos los derechos reservados.</p>
+                <p>Hecho con ❤️ para los amantes del cine y las series</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme management
+        const themeManager = {
+            init() {
+                const savedTheme = localStorage.getItem('theme');
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+                
+                this.setTheme(theme);
+                this.setupEventListeners();
+            },
+            
+            setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                this.updateIcon(theme);
+            },
+            
+            toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                this.setTheme(newTheme);
+            },
+            
+            updateIcon(theme) {
+                const icon = document.getElementById('theme-icon');
+                if (icon) {
+                    icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+                }
+            },
+            
+            setupEventListeners() {
+                const toggle = document.getElementById('theme-toggle');
+                if (toggle) {
+                    toggle.addEventListener('click', () => this.toggleTheme());
+                }
+                
+                // Listen for system theme changes
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                    if (!localStorage.getItem('theme')) {
+                        this.setTheme(e.matches ? 'dark' : 'light');
+                    }
+                });
+            }
+        };
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize theme
+            themeManager.init();
+            
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.main-nav');
+            
+            if (toggle && nav) {
+                toggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    toggle.classList.toggle('active');
+                });
+            }
+        });
+
+        // Lazy loading for images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+</body>
+</html>
