@@ -302,7 +302,7 @@ body {
 }
 
 .post-image {
-    height: 200px;
+    height: 120px;
     overflow: hidden;
     position: relative;
 }
@@ -344,7 +344,8 @@ body {
 /* Ocultar elementos que no queremos en la galería */
 .post-meta,
 .post-excerpt,
-.read-more {
+.read-more,
+.post-summary {
     display: none;
 }
 
@@ -541,7 +542,7 @@ body {
     }
     
     .post-image {
-        height: 150px;
+        height: 100px;
     }
     
     .post-preview h2 {
