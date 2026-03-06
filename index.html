@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Películas Variadas</title>
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Películas Variadas">
+    <link rel="canonical" href="/peliculas-variadas/">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <meta name="description" content="Películas Variadas">
+    <meta name="keywords" content="películas">
+    <meta property="og:title" content="Películas Variadas">
+    <meta property="og:description" content="Películas Variadas">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/peliculas-variadas">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Películas Variadas">
+    <meta name="twitter:description" content="Películas Variadas">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https:;">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "{{CURRENT_PAGE === 'home' ? 'WebSite' : 'Article'}}",
+        "name": "Películas Variadas",
+        "description": "{{CURRENT_PAGE === 'home' ? 'Películas Variadas' : ''}}",
+        "url": "/peliculas-variadas/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Películas Variadas"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">
+                    <a href="/peliculas-variadas/">🎬 Películas Variadas</a>
+                </h1>
+                <nav class="main-nav">
+                    <ul>
+                    </ul>
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Buscar por título...">
+                        <button class="search-button">🔍</button>
+                        <div class="genre-dropdown">
+                            <button class="genre-button">Géneros ▼</button>
+                            <div class="genre-menu">
+                                <a href="#" class="genre-item" data-genre="acción">Acción</a>
+                                <a href="#" class="genre-item" data-genre="comedia">Comedia</a>
+                                <a href="#" class="genre-item" data-genre="drama">Drama</a>
+                                <a href="#" class="genre-item" data-genre="terror">Terror</a>
+                                <a href="#" class="genre-item" data-genre="ciencia ficción">Ciencia Ficción</a>
+                                <a href="#" class="genre-item" data-genre="romance">Romance</a>
+                                <a href="#" class="genre-item" data-genre="thriller">Thriller</a>
+                                <a href="#" class="genre-item" data-genre="todos">Todos</a>
+                            </div>
+                        </div>
+                        <li><a href="/series/" class="">Series Variadas →</a></li>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            
+        <section class="posts-container">
+            <div class="posts-grid">
+                
+            </div>
+        </section>
+    
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.main-nav');
+            
+            if (toggle && nav) {
+                toggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    toggle.classList.toggle('active');
+                });
+            }
+            
+            // Security: Sanitize user input
+            function sanitizeInput(input) {
+                const div = document.createElement('div');
+                div.textContent = input;
+                return div.innerHTML;
+            }
+            
+            // Security: Validate search input
+            function validateSearchInput(input) {
+                // Remove HTML tags, scripts, and special characters
+                return input
+                    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+                    .replace(/<[^>]*>/g, '')
+                    .replace(/[<>'"&]/g, '')
+                    .replace(/javascript:/gi, '')
+                    .replace(/on\w+\s*=/gi, '')
+                    .trim()
+                    .substring(0, 100); // Limit length
+            }
+            
+            // Genre dropdown functionality
+            const genreButton = document.querySelector('.genre-button');
+            const genreMenu = document.querySelector('.genre-menu');
+            const genreItems = document.querySelectorAll('.genre-item');
+            
+            genreButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                genreMenu.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!genreButton.contains(e.target) && !genreMenu.contains(e.target)) {
+                    genreMenu.classList.remove('active');
+                }
+            });
+            
+            // Genre selection
+            genreItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const genre = this.dataset.genre;
+                    
+                    // Update active state
+                    genreItems.forEach(g => g.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter posts by genre
+                    filterByGenre(genre);
+                    
+                    // Close dropdown
+                    genreMenu.classList.remove('active');
+                });
+            });
+            
+            function filterByGenre(genre) {
+                const posts = document.querySelectorAll('.post-preview');
+                
+                posts.forEach(post => {
+                    if (genre === 'todos') {
+                        post.style.display = 'block';
+                    } else {
+                        const title = post.querySelector('h2').textContent.toLowerCase();
+                        const excerpt = post.querySelector('.post-excerpt').textContent.toLowerCase();
+                        
+                        const matches = title.includes(genre.toLowerCase()) || 
+                                      excerpt.includes(genre.toLowerCase());
+                        
+                        post.style.display = matches ? 'block' : 'none';
+                    }
+                });
+                
+                // Show message if no results
+                const visiblePosts = Array.from(posts).filter(post => post.style.display !== 'none');
+                const container = document.querySelector('.posts-grid');
+                let noResultsMsg = document.querySelector('.no-results');
+                
+                if (visiblePosts.length === 0 && genre !== 'todos') {
+                    if (!noResultsMsg) {
+                        noResultsMsg = document.createElement('p');
+                        noResultsMsg.className = 'no-results';
+                        noResultsMsg.textContent = 'No se encontraron publicaciones del género "' + sanitizeInput(genre) + '"';
+                        noResultsMsg.style.cssText = 'text-align: center; color: var(--text-light); grid-column: 1 / -1; padding: 2rem;';
+                        container.appendChild(noResultsMsg);
+                    }
+                } else if (noResultsMsg) {
+                    noResultsMsg.remove();
+                }
+            }
+            
+            // Search functionality with security
+            const searchInput = document.querySelector('.search-input');
+            const searchButton = document.querySelector('.search-button');
+            const posts = document.querySelectorAll('.post-preview');
+            
+            function performSearch() {
+                // Sanitize and validate input
+                const rawInput = searchInput.value;
+                const sanitizedInput = validateSearchInput(rawInput);
+                
+                // Update input with sanitized value
+                searchInput.value = sanitizedInput;
+                
+                const searchTerm = sanitizedInput.toLowerCase().trim();
+                
+                posts.forEach(post => {
+                    const title = post.querySelector('h2').textContent.toLowerCase();
+                    const excerpt = post.querySelector('.post-excerpt').textContent.toLowerCase();
+                    const category = post.querySelector('.category')?.textContent.toLowerCase() || '';
+                    
+                    const matches = title.includes(searchTerm) || 
+                                  excerpt.includes(searchTerm) || 
+                                  category.includes(searchTerm);
+                    
+                    post.style.display = matches ? 'block' : 'none';
+                });
+                
+                // Show message if no results
+                const visiblePosts = Array.from(posts).filter(post => post.style.display !== 'none');
+                const container = document.querySelector('.posts-grid');
+                let noResultsMsg = document.querySelector('.no-results');
+                
+                if (visiblePosts.length === 0 && searchTerm) {
+                    if (!noResultsMsg) {
+                        noResultsMsg = document.createElement('p');
+                        noResultsMsg.className = 'no-results';
+                        noResultsMsg.textContent = 'No se encontraron resultados para "' + sanitizeInput(searchTerm) + '"';
+                        noResultsMsg.style.cssText = 'text-align: center; color: var(--text-light); grid-column: 1 / -1; padding: 2rem;';
+                        container.appendChild(noResultsMsg);
+                    }
+                } else if (noResultsMsg) {
+                    noResultsMsg.remove();
+                }
+            }
+            
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                } else if (e.key === 'Escape') {
+                    searchInput.value = '';
+                    performSearch();
+                }
+            });
+            
+            // Security: Prevent paste events with potentially malicious content
+            searchInput.addEventListener('paste', function(e) {
+                e.preventDefault();
+                const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+                const sanitizedText = validateSearchInput(pastedText);
+                document.execCommand('insertText', false, sanitizedText);
+            });
+            
+            // Security: Prevent drag and drop
+            searchInput.addEventListener('dragover', function(e) {
+                e.preventDefault();
+            });
+            
+            searchInput.addEventListener('drop', function(e) {
+                e.preventDefault();
+            });
+            
+            // Clear search on escape key anywhere
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && document.activeElement === searchInput) {
+                    searchInput.value = '';
+                    performSearch();
+                }
+            });
+            
+            // Security: Content Security Policy headers (if server supports it)
+            // This would be implemented on the server side
+        });
+
+        // Lazy loading for images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+</body>
+</html>
