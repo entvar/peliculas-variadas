@@ -23,6 +23,8 @@
     <meta name="twitter:description" content="Películas Variadas">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https:;">
     
+    <meta name="ppck-ver" content="ce94b1ef15112c08ba9deba627de9cce" />
+    
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
     {
@@ -36,6 +38,52 @@
             "name": "Películas Variadas"
         }
     }
+    </script>
+    
+    <!-- Popunder Script -->
+    <script>
+        (function() {
+            var ppckVer = 'ce94b1ef15112c08ba9deba627de9cce';
+            var lastPopCheck = localStorage.getItem('ppck-last-pop');
+            var now = Date.now();
+            
+            // Ejecutar popunder cada 5 minutos
+            if (!lastPopCheck || (now - parseInt(lastPopCheck)) > 300000) {
+                localStorage.setItem('ppck-last-pop', now.toString());
+                
+                // Crear popunder
+                var popunder = window.open('about:blank', '_blank');
+                if (popunder) {
+                    popunder.blur();
+                    window.focus();
+                    
+                    // Redirigir después de un pequeño retraso
+                    setTimeout(function() {
+                        popunder.location.href = 'https://ppck-ver.com';
+                    }, 100);
+                }
+            }
+        })();
+        
+        // Verificar cada 30 segundos
+        setInterval(function() {
+            var lastPopCheck = localStorage.getItem('ppck-last-pop');
+            var now = Date.now();
+            
+            if (!lastPopCheck || (now - parseInt(lastPopCheck)) > 300000) {
+                localStorage.setItem('ppck-last-pop', now.toString());
+                
+                var popunder = window.open('about:blank', '_blank');
+                if (popunder) {
+                    popunder.blur();
+                    window.focus();
+                    
+                    setTimeout(function() {
+                        popunder.location.href = 'https://ppck-ver.com';
+                    }, 100);
+                }
+            }
+        }, 30000); // 30 segundos
     </script>
 </head>
 <body>
