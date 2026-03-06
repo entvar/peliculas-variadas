@@ -374,7 +374,7 @@ body {
 
 .post-featured-image {
     width: 100%;
-    max-height: 400px;
+    max-height: 250px;
     object-fit: cover;
     border-radius: var(--border-radius);
     margin-bottom: 2rem;
@@ -543,6 +543,10 @@ body {
     
     .post-image {
         height: 100px;
+    }
+    
+    .post-featured-image {
+        max-height: 180px;
     }
     
     .post-preview h2 {
