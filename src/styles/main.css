@@ -302,7 +302,7 @@ body {
 }
 
 .post-image {
-    height: 120px;
+    height: 180px;
     overflow: hidden;
     position: relative;
 }
@@ -317,7 +317,8 @@ body {
 .post-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: var(--background-gray);
     transition: var(--transition);
 }
 
@@ -350,7 +351,7 @@ body {
 }
 
 .post-content {
-    padding: 1rem;
+    padding: 0.5rem 1rem 1rem;
     text-align: center;
 }
 
@@ -366,6 +367,54 @@ body {
     text-decoration: none;
     transition: var(--transition);
     display: block;
+}
+
+.post-preview h2 a:hover {
+    color: var(--primary-color);
+}
+
+.post-excerpt {
+    display: none; /* Ocultar excerpt en gallery */
+}
+
+.read-more {
+    display: none; /* Ocultar botón en gallery */
+}
+
+/* Botones de streaming debajo de la imagen */
+.post-streaming-buttons {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: -1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.post-streaming-buttons a {
+    display: inline-block;
+    background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin: 2px;
+    transition: transform 0.2s;
+}
+
+.post-streaming-buttons a:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #ff1a1a 0%, #cc0000 100%);
+}
+
+.post-streaming-buttons a:nth-child(2) {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+.post-streaming-buttons a:nth-child(2):hover {
+    background: linear-gradient(135deg, #ff8787 0%, #ff6b35 100%);
 }
 
 .post-preview h2 a:hover {
