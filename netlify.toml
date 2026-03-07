@@ -1,0 +1,75 @@
+# Configuración de Netlify para Películas Variadas
+# Archivo: netlify.toml
+
+[build]
+  publish = "dist"
+  command = "echo 'Build completado'"
+
+# Configuración de Headers de Seguridad
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https:; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:"
+
+# Headers específicos para archivos estáticos
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Configuración de Redirects
+[[redirects]]
+  from = "/peliculas-variadas/*"
+  to = "/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/series-variadas/*"
+  to = "https://seriesvariadas.netlify.app/:splat"
+  status = 301
+
+# Manejo de errores personalizados
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+# Configuración de procesamiento de archivos
+[build.processing]
+  skip_processing = false
+
+# Configuración de seguridad adicional
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
+
+# Optimización de imágenes
+[build.optimization]
+  skip_processing = false
