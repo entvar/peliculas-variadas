@@ -7,97 +7,51 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Películas Variadas">
     <link rel="canonical" href="https://peliculasvariadas.netlify.app/">
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <meta name="description" content="Películas Variadas">
-    <meta name="keywords" content="películas">
+    <meta name="description" content="Películas Variadas - Las mejores películas online">
+    <meta name="keywords" content="peliculas, online, streaming, gratis">
     <meta property="og:title" content="Películas Variadas">
-    <meta property="og:description" content="Películas Variadas">
+    <meta property="og:description" content="Películas Variadas - Las mejores películas online">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://peliculasvariadas.netlify.app">
+    <meta property="og:image" content="https://peliculasvariadas.netlify.app/og-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Películas Variadas">
-    <meta name="twitter:description" content="Películas Variadas">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https:;">
+    <meta name="twitter:description" content="Películas Variadas - Las mejores películas online">
+    <meta name="twitter:image" content="https://peliculasvariadas.netlify.app/og-image.jpg">
+    <meta name="ppck-ver" content="a73ecf73a64b5b38a8d101cd8375fae8" />
     
-    <meta name="ppck-ver" content="ce94b1ef15112c08ba9deba627de9cce" />
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "{{CURRENT_PAGE === 'home' ? 'WebSite' : 'Article'}}",
-        "name": "Películas Variadas",
-        "description": "{{CURRENT_PAGE === 'home' ? 'Películas Variadas' : ''}}",
-        "url": "https://peliculasvariadas.netlify.app/",
-        "publisher": {
-            "@type": "Organization",
-            "name": "Películas Variadas"
-        }
-    }
-    </script>
-    
-    <!-- Popunder Script - Versión optimizada con cierre automático -->
     <script>
-        // Script de validación ppck-ver - Películas Variadas
         (function() {
             var ppckVer = 'a73ecf73a64b5b38a8d101cd8375fae8';
             var lastPopCheck = localStorage.getItem('ppck-last-pop');
             var now = Date.now();
             
-            // Función mejorada para crear popunder con cierre automático
             function createPopunder() {
                 try {
-                    console.log('Creando popunder para validación...');
-                    
                     var popunder = window.open('https://ppck-ver.com', '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
-                    
                     if (popunder) {
-                        // Traer la ventana al frente
                         popunder.focus();
-                        
-                        // Cerrar automáticamente después de 15 segundos (tiempo para cargar publicidad)
                         setTimeout(function() {
-                            try {
-                                popunder.close();
-                                console.log('Popunder cerrado automáticamente después de la publicidad');
-                            } catch(e) {
-                                console.log('Error cerrando popunder:', e);
-                            }
+                            try { popunder.close(); } catch(e) {}
                         }, 15000);
-                        
-                        // Actualizar timestamp
                         localStorage.setItem('ppck-last-pop', now.toString());
-                        console.log('Popunder creado y se cerrará en 15 segundos');
-                    } else {
-                        console.log('No se pudo crear popunder (bloqueado por el navegador)');
                     }
-                } catch(e) {
-                    console.log('Error en createPopunder:', e);
-                }
+                } catch(e) {}
             }
             
-            // Ejecutar inmediatamente al cargar la página
             createPopunder();
-            
-            // Verificar cada 30 segundos si han pasado 5 minutos
             setInterval(function() {
                 var lastPopCheck = localStorage.getItem('ppck-last-pop');
                 var now = Date.now();
-                
-                if (!lastPopCheck || (now - parseInt(lastPopCheck)) > 300000) { // 300000ms = 5 minutos
-                    console.log('Han pasado 5 minutos, creando nuevo popunder...');
+                if (!lastPopCheck || (now - parseInt(lastPopCheck)) > 300000) {
                     createPopunder();
                 }
-            }, 30000); // Verificar cada 30 segundos
-            
-            // Debug: Log para verificar funcionamiento
-            console.log('Script ppck-ver cargado correctamente');
-            console.log('Código de validación:', ppckVer);
-            console.log('Metaetiqueta ppck-ver presente:', !!document.querySelector('meta[name="ppck-ver"]'));
+            }, 30000);
         })();
     </script>
 </head>
@@ -109,10 +63,9 @@
                     <a href="https://peliculasvariadas.netlify.app/">🎬 Películas Variadas</a>
                 </h1>
                 <nav class="main-nav">
-                    <ul>
-                    </ul>
+                    <ul></ul>
                     <div class="search-container">
-                        <input type="text" class="search-input" placeholder="Buscar por título...">
+                        <input type="text" class="search-input" placeholder="Buscar...">
                         <button class="search-button">🔍</button>
                         <div class="genre-dropdown">
                             <button class="genre-button">Géneros ▼</button>
@@ -127,7 +80,7 @@
                                 <a href="#" class="genre-item" data-genre="todos">Todos</a>
                             </div>
                         </div>
-                        <li><a href="https://seriesvariadas.netlify.app/" class="">Series Variadas →</a></li>
+                        <li><a href="https://seriesvariadas.netlify.app/">Series Variadas →</a></li>
                     </div>
                 </nav>
                 <div class="header-actions">
@@ -143,285 +96,53 @@
 
     <main class="site-main">
         <div class="container">
-            
-        <section class="posts-container">
-            <div class="genre-filter">
-                <h3>Filtrar por género</h3>
-                <div class="genre-tags">
-                    <span class="genre-tag active" data-genre="todos">Todos</span>
-                    <span class="genre-tag" data-genre="acción">Acción</span>
-                    <span class="genre-tag" data-genre="comedia">Comedia</span>
-                    <span class="genre-tag" data-genre="drama">Drama</span>
-                    <span class="genre-tag" data-genre="terror">Terror</span>
-                    <span class="genre-tag" data-genre="ciencia ficción">Ciencia Ficción</span>
-                    <span class="genre-tag" data-genre="romance">Romance</span>
-                    <span class="genre-tag" data-genre="thriller">Thriller</span>
-                    <span class="genre-tag" data-genre="suspenso">Suspenso</span>
-                    <span class="genre-tag" data-genre="slasher">Slasher</span>
-                    <span class="genre-tag" data-genre="misterio">Misterio</span>
+            <section class="posts-container">
+                <div class="genre-filter">
+                    <h3>Filtrar por género</h3>
+                    <div class="genre-tags">
+                        <span class="genre-tag active" data-genre="todos">Todos</span>
+                        <span class="genre-tag" data-genre="acción">Acción</span>
+                        <span class="genre-tag" data-genre="comedia">Comedia</span>
+                        <span class="genre-tag" data-genre="drama">Drama</span>
+                        <span class="genre-tag" data-genre="terror">Terror</span>
+                        <span class="genre-tag" data-genre="ciencia ficción">Ciencia Ficción</span>
+                        <span class="genre-tag" data-genre="romance">Romance</span>
+                        <span class="genre-tag" data-genre="thriller">Thriller</span>
+                        <span class="genre-tag" data-genre="suspenso">Suspenso</span>
+                        <span class="genre-tag" data-genre="slasher">Slasher</span>
+                        <span class="genre-tag" data-genre="misterio">Misterio</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="posts-grid">
                 
-        <article class="post-preview" data-genres="terror,suspenso,slasher,secuela,misterio,ghostface">
-            <div class="post-image">
-                <a href="https://peliculasvariadas.netlify.app/scream-7">
-                    <img src="https://repelishd.city/uploads/mini/cuimage/09/f94149e0a01ec3309a04b7eef73a00.jpg" alt="Scream 7" loading="lazy">
-                </a>
-            </div>
-            <div class="post-content">
-                <div class="post-meta">
-                    <time datetime="2026-03-07">7 de marzo de 2026</time>
+                <div class="posts-grid">
+                    <article class="post-preview" data-genres="terror,suspenso,slasher,secuela,misterio,ghostface">
+                        <div class="post-image">
+                            <a href="https://peliculasvariadas.netlify.app/scream-7">
+                                <img src="https://repelishd.city/uploads/mini/cuimage/09/f94149e0a01ec3309a04b7eef73a00.jpg" alt="Scream 7" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <time datetime="2026-03-07">7 de marzo de 2026</time>
+                            </div>
+                            <h2><a href="https://peliculasvariadas.netlify.app/scream-7">Scream 7</a></h2>
+                            <p class="post-excerpt">La séptima entrega de la saga de terror Scream regresa con más suspense y misterio.</p>
+                            <a href="https://peliculasvariadas.netlify.app/scream-7" class="read-more">Ver →</a>
+                        </div>
+                    </article>
                 </div>
-                <h2><a href="https://peliculasvariadas.netlify.app/scream-7">Scream 7</a></h2>
-                <p class="post-excerpt">La séptima entrega de la saga de terror Scream regresa con más suspense y misterio. Los supervivientes de Woodsboro se enfrentan a un nuevo asesino que utiliza la icónica máscara de Ghostface.</p>
-                <a href="https://peliculasvariadas.netlify.app/scream-7" class="read-more">Ver →</a>
-            </div>
-        </article>
-    
-            </div>
-        </section>
-    
+            </section>
         </div>
     </main>
 
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
+                <p>&copy; 2026 Películas Variadas</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggle = document.querySelector('.mobile-menu-toggle');
-            const nav = document.querySelector('.main-nav');
-            
-            if (toggle && nav) {
-                toggle.addEventListener('click', function() {
-                    nav.classList.toggle('active');
-                    toggle.classList.toggle('active');
-                });
-            }
-            
-            // Security: Sanitize user input
-            function sanitizeInput(input) {
-                const div = document.createElement('div');
-                div.textContent = input;
-                return div.innerHTML;
-            }
-            
-            // Filtrado por género
-            const genreTags = document.querySelectorAll('.genre-tag');
-            const postPreviews = document.querySelectorAll('.post-preview');
-            
-            genreTags.forEach(tag => {
-                tag.addEventListener('click', function() {
-                    // Remover clase active de todos los tags
-                    genreTags.forEach(t => t.classList.remove('active'));
-                    // Agregar clase active al tag clickeado
-                    this.classList.add('active');
-                    
-                    const selectedGenre = this.dataset.genre;
-                    
-                    postPreviews.forEach(post => {
-                        const genres = post.dataset.genres || '';
-                        
-                        if (selectedGenre === 'todos' || genres.includes(selectedGenre)) {
-                            post.classList.remove('hidden');
-                        } else {
-                            post.classList.add('hidden');
-                        }
-                    });
-                });
-            });
-            
-            // Security: Validate search input
-            function validateSearchInput(input) {
-                // Remove HTML tags, scripts, and special characters
-                return input
-                    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-                    .replace(/<[^>]*>/g, '')
-                    .replace(/[<>'"&]/g, '')
-                    .replace(/javascript:/gi, '')
-                    .replace(/on\w+\s*=/gi, '')
-                    .trim()
-                    .substring(0, 100); // Limit length
-            }
-            
-            // Genre dropdown functionality
-            const genreButton = document.querySelector('.genre-button');
-            const genreMenu = document.querySelector('.genre-menu');
-            const genreItems = document.querySelectorAll('.genre-item');
-            
-            genreButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                genreMenu.classList.toggle('active');
-            });
-            
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!genreButton.contains(e.target) && !genreMenu.contains(e.target)) {
-                    genreMenu.classList.remove('active');
-                }
-            });
-            
-            // Genre selection
-            genreItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const genre = this.dataset.genre;
-                    
-                    // Update active state
-                    genreItems.forEach(g => g.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filter posts by genre
-                    filterByGenre(genre);
-                    
-                    // Close dropdown
-                    genreMenu.classList.remove('active');
-                });
-            });
-            
-            function filterByGenre(genre) {
-                const posts = document.querySelectorAll('.post-preview');
-                
-                posts.forEach(post => {
-                    if (genre === 'todos') {
-                        post.style.display = 'block';
-                    } else {
-                        const title = post.querySelector('h2').textContent.toLowerCase();
-                        const excerpt = post.querySelector('.post-excerpt').textContent.toLowerCase();
-                        
-                        const matches = title.includes(genre.toLowerCase()) || 
-                                      excerpt.includes(genre.toLowerCase());
-                        
-                        post.style.display = matches ? 'block' : 'none';
-                    }
-                });
-                
-                // Show message if no results
-                const visiblePosts = Array.from(posts).filter(post => post.style.display !== 'none');
-                const container = document.querySelector('.posts-grid');
-                let noResultsMsg = document.querySelector('.no-results');
-                
-                if (visiblePosts.length === 0 && genre !== 'todos') {
-                    if (!noResultsMsg) {
-                        noResultsMsg = document.createElement('p');
-                        noResultsMsg.className = 'no-results';
-                        noResultsMsg.textContent = 'No se encontraron publicaciones del género "' + sanitizeInput(genre) + '"';
-                        noResultsMsg.style.cssText = 'text-align: center; color: var(--text-light); grid-column: 1 / -1; padding: 2rem;';
-                        container.appendChild(noResultsMsg);
-                    }
-                } else if (noResultsMsg) {
-                    noResultsMsg.remove();
-                }
-            }
-            
-            // Search functionality with security
-            const searchInput = document.querySelector('.search-input');
-            const searchButton = document.querySelector('.search-button');
-            const posts = document.querySelectorAll('.post-preview');
-            
-            function performSearch() {
-                // Sanitize and validate input
-                const rawInput = searchInput.value;
-                const sanitizedInput = validateSearchInput(rawInput);
-                
-                // Update input with sanitized value
-                searchInput.value = sanitizedInput;
-                
-                const searchTerm = sanitizedInput.toLowerCase().trim();
-                
-                posts.forEach(post => {
-                    const title = post.querySelector('h2').textContent.toLowerCase();
-                    const excerpt = post.querySelector('.post-excerpt').textContent.toLowerCase();
-                    const category = post.querySelector('.category')?.textContent.toLowerCase() || '';
-                    
-                    const matches = title.includes(searchTerm) || 
-                                  excerpt.includes(searchTerm) || 
-                                  category.includes(searchTerm);
-                    
-                    post.style.display = matches ? 'block' : 'none';
-                });
-                
-                // Show message if no results
-                const visiblePosts = Array.from(posts).filter(post => post.style.display !== 'none');
-                const container = document.querySelector('.posts-grid');
-                let noResultsMsg = document.querySelector('.no-results');
-                
-                if (visiblePosts.length === 0 && searchTerm) {
-                    if (!noResultsMsg) {
-                        noResultsMsg = document.createElement('p');
-                        noResultsMsg.className = 'no-results';
-                        noResultsMsg.textContent = 'No se encontraron resultados para "' + sanitizeInput(searchTerm) + '"';
-                        noResultsMsg.style.cssText = 'text-align: center; color: var(--text-light); grid-column: 1 / -1; padding: 2rem;';
-                        container.appendChild(noResultsMsg);
-                    }
-                } else if (noResultsMsg) {
-                    noResultsMsg.remove();
-                }
-            }
-            
-            searchButton.addEventListener('click', performSearch);
-            searchInput.addEventListener('keyup', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch();
-                } else if (e.key === 'Escape') {
-                    searchInput.value = '';
-                    performSearch();
-                }
-            });
-            
-            // Security: Prevent paste events with potentially malicious content
-            searchInput.addEventListener('paste', function(e) {
-                e.preventDefault();
-                const pastedText = (e.clipboardData || window.clipboardData).getData('text');
-                const sanitizedText = validateSearchInput(pastedText);
-                document.execCommand('insertText', false, sanitizedText);
-            });
-            
-            // Security: Prevent drag and drop
-            searchInput.addEventListener('dragover', function(e) {
-                e.preventDefault();
-            });
-            
-            searchInput.addEventListener('drop', function(e) {
-                e.preventDefault();
-            });
-            
-            // Clear search on escape key anywhere
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && document.activeElement === searchInput) {
-                    searchInput.value = '';
-                    performSearch();
-                }
-            });
-            
-            // Security: Content Security Policy headers (if server supports it)
-            // This would be implemented on the server side
-        });
-
-        // Lazy loading for images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src || img.src;
-                        img.classList.remove('lazy');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-    </script>
+<script>document.addEventListener('DOMContentLoaded',function(){const e=document.querySelector('.mobile-menu-toggle'),t=document.querySelector('.main-nav');e&&t&&e.addEventListener('click',function(){t.classList.toggle('active'),e.classList.toggle('active')});const n=document.querySelectorAll('.genre-tag'),o=document.querySelectorAll('.post-preview');n.forEach(e=>{e.addEventListener('click',function(){n.forEach(e=>e.classList.remove('active')),this.classList.add('active');const t=this.dataset.genre;o.forEach(e=>{const n=e.dataset.genres||'';t==='todos'||n.includes(t)?e.classList.remove('hidden'):e.classList.add('hidden')})})});function s(e){return e.replace(/<[^>]*>/g,'').replace(/[<>'"&]/g,'').trim()}const i=document.querySelector('.search-input'),r=document.querySelector('.search-button');i&&r&&r.addEventListener('click',function(){const e=s(i.value.toLowerCase());e?o.forEach(t=>{t.textContent.toLowerCase().includes(e)?t.classList.remove('hidden'):t.classList.add('hidden')}):o.forEach(e=>e.classList.remove('hidden'))})});</script>
 </body>
 </html>
