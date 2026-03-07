@@ -145,9 +145,26 @@
         <div class="container">
             
         <section class="posts-container">
+            <div class="genre-filter">
+                <h3>Filtrar por género</h3>
+                <div class="genre-tags">
+                    <span class="genre-tag active" data-genre="todos">Todos</span>
+                    <span class="genre-tag" data-genre="acción">Acción</span>
+                    <span class="genre-tag" data-genre="comedia">Comedia</span>
+                    <span class="genre-tag" data-genre="drama">Drama</span>
+                    <span class="genre-tag" data-genre="terror">Terror</span>
+                    <span class="genre-tag" data-genre="ciencia ficción">Ciencia Ficción</span>
+                    <span class="genre-tag" data-genre="romance">Romance</span>
+                    <span class="genre-tag" data-genre="thriller">Thriller</span>
+                    <span class="genre-tag" data-genre="suspenso">Suspenso</span>
+                    <span class="genre-tag" data-genre="slasher">Slasher</span>
+                    <span class="genre-tag" data-genre="misterio">Misterio</span>
+                </div>
+            </div>
+            
             <div class="posts-grid">
                 
-        <article class="post-preview">
+        <article class="post-preview" data-genres="terror,suspenso,slasher,secuela,misterio,ghostface">
             <div class="post-image">
                 <a href="https://peliculasvariadas.netlify.app/scream-7">
                     <img src="https://repelishd.city/uploads/mini/cuimage/09/f94149e0a01ec3309a04b7eef73a00.jpg" alt="Scream 7" loading="lazy">
@@ -195,6 +212,31 @@
                 div.textContent = input;
                 return div.innerHTML;
             }
+            
+            // Filtrado por género
+            const genreTags = document.querySelectorAll('.genre-tag');
+            const postPreviews = document.querySelectorAll('.post-preview');
+            
+            genreTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    // Remover clase active de todos los tags
+                    genreTags.forEach(t => t.classList.remove('active'));
+                    // Agregar clase active al tag clickeado
+                    this.classList.add('active');
+                    
+                    const selectedGenre = this.dataset.genre;
+                    
+                    postPreviews.forEach(post => {
+                        const genres = post.dataset.genres || '';
+                        
+                        if (selectedGenre === 'todos' || genres.includes(selectedGenre)) {
+                            post.classList.remove('hidden');
+                        } else {
+                            post.classList.add('hidden');
+                        }
+                    });
+                });
+            });
             
             // Security: Validate search input
             function validateSearchInput(input) {

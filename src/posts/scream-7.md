@@ -4,7 +4,8 @@ date: "2026-03-07"
 category: "Películas"
 summary: "La séptima entrega de la saga de terror Scream regresa con más suspense y misterio. Los supervivientes de Woodsboro se enfrentan a un nuevo asesino que utiliza la icónica máscara de Ghostface."
 image: "https://repelishd.city/uploads/mini/cuimage/09/f94149e0a01ec3309a04b7eef73a00.jpg"
-tags: ["terror", "suspenso", "slasher", "secuela"]
+tags: ["terror", "suspenso", "slasher", "secuela", "misterio", "ghostface"]
+genre: "terror"
 ---
 
 # Scream 7

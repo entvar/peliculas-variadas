@@ -276,6 +276,54 @@ body {
     text-align: center;
 }
 
+/* Filtro por género */
+.genre-filter {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.genre-filter h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.genre-tag {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.genre-tag:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.genre-tag.active {
+    background: var(--secondary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
 .posts-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -283,7 +331,6 @@ body {
     margin-bottom: 3rem;
 }
 
-/* Post Preview - Tarjeta de imagen */
 .post-preview {
     background: var(--background-gray);
     border-radius: var(--border-radius);
@@ -293,6 +340,10 @@ body {
     border: 1px solid var(--border-color);
     cursor: pointer;
     position: relative;
+}
+
+.post-preview.hidden {
+    display: none;
 }
 
 .post-preview:hover {
@@ -443,6 +494,30 @@ body {
 .post-header .post-meta {
     justify-content: center;
     margin-bottom: 1.5rem;
+}
+
+/* Etiquetas de género en posts */
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.tag {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: lowercase;
+    transition: var(--transition);
+}
+
+.tag:hover {
+    background: var(--secondary-color);
+    transform: translateY(-1px);
 }
 
 .post-header h1 {
