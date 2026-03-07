@@ -1,70 +1,23 @@
-# Configuración de Netlify para Películas Variadas - Optimizado
 [build]
   publish = "."
-  command = "echo 'Build completado'"
+  command = "echo 'ok'"
 
-# Headers de seguridad y caché agresiva
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=31536000"
 
-# CSS y JS con caché máxima
 [[headers]]
   for = "*.css"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=31536000"
 
 [[headers]]
   for = "*.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Imágenes con caché larga
-[[headers]]
-  for = "*.jpg"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "*.png"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "*.webp"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# HTML con caché corta para actualizaciones
-[[headers]]
-  for = "*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-
-# Redirects optimizados
-[[redirects]]
-  from = "/peliculas-variadas/*"
-  to = "/:splat"
-  status = 301
-
-[[redirects]]
-  from = "/series-variadas/*"
-  to = "https://seriesvariadas.netlify.app/:splat"
-  status = 301
+    Cache-Control = "public, max-age=31536000"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 404
-
-[context.production.environment]
-  NODE_ENV = "production"
-
-[context.deploy-preview.environment]
-  NODE_ENV = "development"
