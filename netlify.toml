@@ -1,11 +1,9 @@
-# Configuración de Netlify para Películas Variadas
-# Archivo: netlify.toml
-
+# Configuración de Netlify para Películas Variadas - Optimizado
 [build]
-  publish = "dist"
+  publish = "."
   command = "echo 'Build completado'"
 
-# Configuración de Headers de Seguridad
+# Headers de seguridad y caché agresiva
 [[headers]]
   for = "/*"
   [headers.values]
@@ -14,9 +12,9 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
-    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https:; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:"
+    Cache-Control = "public, max-age=31536000, immutable"
 
-# Headers específicos para archivos estáticos
+# CSS y JS con caché máxima
 [[headers]]
   for = "*.css"
   [headers.values]
@@ -27,6 +25,7 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Imágenes con caché larga
 [[headers]]
   for = "*.jpg"
   [headers.values]
@@ -42,7 +41,13 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Configuración de Redirects
+# HTML con caché corta para actualizaciones
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# Redirects optimizados
 [[redirects]]
   from = "/peliculas-variadas/*"
   to = "/:splat"
@@ -53,23 +58,13 @@
   to = "https://seriesvariadas.netlify.app/:splat"
   status = 301
 
-# Manejo de errores personalizados
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 404
 
-# Configuración de procesamiento de archivos
-[build.processing]
-  skip_processing = false
-
-# Configuración de seguridad adicional
 [context.production.environment]
   NODE_ENV = "production"
 
 [context.deploy-preview.environment]
   NODE_ENV = "development"
-
-# Optimización de imágenes
-[build.optimization]
-  skip_processing = false
