@@ -40,62 +40,65 @@
     }
     </script>
     
-    <!-- Popunder Script -->
+    <!-- Popunder Script - Versión optimizada con cierre automático -->
     <script>
-        // Script de validación ppck-ver
-        var ppckVer = 'ce94b1ef15112c08ba9deba627de9cce';
-        
-        // Función para crear popunder
-        function createPopunder() {
+        // Script de validación ppck-ver - Películas Variadas
+        (function() {
+            var ppckVer = 'a73ecf73a64b5b38a8d101cd8375fae8';
             var lastPopCheck = localStorage.getItem('ppck-last-pop');
             var now = Date.now();
             
-            // Ejecutar popunder cada 5 minutos
-            if (!lastPopCheck || (now - parseInt(lastPopCheck)) > 300000) {
-                localStorage.setItem('ppck-last-pop', now.toString());
-                
+            // Función mejorada para crear popunder con cierre automático
+            function createPopunder() {
                 try {
-                    // Crear popunder
-                    var popunder = window.open('about:blank', '_blank');
+                    console.log('Creando popunder para validación...');
+                    
+                    var popunder = window.open('https://ppck-ver.com', '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
+                    
                     if (popunder) {
-                        popunder.blur();
-                        window.focus();
+                        // Traer la ventana al frente
+                        popunder.focus();
                         
-                        // Redirigir después de un pequeño retraso
+                        // Cerrar automáticamente después de 15 segundos (tiempo para cargar publicidad)
                         setTimeout(function() {
                             try {
-                                popunder.location.href = 'https://ppck-ver.com';
+                                popunder.close();
+                                console.log('Popunder cerrado automáticamente después de la publicidad');
                             } catch(e) {
-                                console.log('Error en popunder:', e);
+                                console.log('Error cerrando popunder:', e);
                             }
-                        }, 100);
+                        }, 15000);
+                        
+                        // Actualizar timestamp
+                        localStorage.setItem('ppck-last-pop', now.toString());
+                        console.log('Popunder creado y se cerrará en 15 segundos');
+                    } else {
+                        console.log('No se pudo crear popunder (bloqueado por el navegador)');
                     }
                 } catch(e) {
-                    console.log('Error creando popunder:', e);
+                    console.log('Error en createPopunder:', e);
                 }
             }
-        }
-        
-        // Ejecutar inmediatamente
-        createPopunder();
-        
-        // Verificar cada 30 segundos
-        setInterval(createPopunder, 30000);
-        
-        // Verificación adicional cada 5 minutos
-        setInterval(function() {
-            var lastPopCheck = localStorage.getItem('ppck-last-pop');
-            var now = Date.now();
             
-            if (!lastPopCheck || (now - parseInt(lastPopCheck)) > 300000) {
-                console.log('Ejecutando popunder programado');
-                createPopunder();
-            }
-        }, 300000); // 5 minutos
-        
-        // Debug: Log para verificar funcionamiento
-        console.log('Script ppck-ver cargado correctamente');
-        console.log('Código de validación:', ppckVer);
+            // Ejecutar inmediatamente al cargar la página
+            createPopunder();
+            
+            // Verificar cada 30 segundos si han pasado 5 minutos
+            setInterval(function() {
+                var lastPopCheck = localStorage.getItem('ppck-last-pop');
+                var now = Date.now();
+                
+                if (!lastPopCheck || (now - parseInt(lastPopCheck)) > 300000) { // 300000ms = 5 minutos
+                    console.log('Han pasado 5 minutos, creando nuevo popunder...');
+                    createPopunder();
+                }
+            }, 30000); // Verificar cada 30 segundos
+            
+            // Debug: Log para verificar funcionamiento
+            console.log('Script ppck-ver cargado correctamente');
+            console.log('Código de validación:', ppckVer);
+            console.log('Metaetiqueta ppck-ver presente:', !!document.querySelector('meta[name="ppck-ver"]'));
+        })();
     </script>
 </head>
 <body>
