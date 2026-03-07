@@ -86,15 +86,11 @@ La película combina terror psicológico, suspense y momentos de humor negro, cr
 
 <div style="text-align: center; margin: 30px 0;">
     <a href="https://supervideo.cc/hkmjx0dakzfe" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #e50914 0%, #b20710 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 5px; transition: transform 0.2s;">
-        🎥 Ver en SuperVideo
-    </a>
-    <a href="https://goodstream.one/ei5jy3q84wsl" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 5px; transition: transform 0.2s;">
-        📺 Ver en GoodStream
+        🎥 Ver Película
     </a>
 </div>
 
-**Opciones disponibles para ver Scream 7 en streaming:**
+**Opción disponible para ver Scream 7 en streaming:**
 - **SuperVideo**: Calidad HD con subtítulos en español
-- **GoodStream**: Opción alternativa con múltiples servidores
 
-*Nota: Los enlaces redirigen a plataformas de streaming externas. La disponibilidad puede variar según tu región.*
+*Nota: El enlace redirige a una plataforma de streaming externa. La disponibilidad puede variar según tu región.*
